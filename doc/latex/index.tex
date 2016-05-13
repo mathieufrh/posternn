@@ -1,0 +1,60 @@
+\section*{D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N }
+
+This program implement a self organized map (S\-O\-M) neural network in C and use it to posterize images. The S\-O\-M input is the image pixels R\-G\-B values. The network will iterate on the input and process it until the defined number of iterations is reached. A new image is then created using the network output which correspond to the posterized image pixels R\-G\-B values.
+
+For further details please see the report P\-D\-F file (french inside).
+
+The program works pretty well with suported image formats without transparency.
+
+\section*{R\-E\-Q\-U\-I\-R\-E\-M\-E\-N\-T }
+
+To compile this program you'll need cmake. On debian you can use\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{# apt-get install cmake}
+\end{DoxyCode}
+
+
+You'll also need Open\-C\-V. On debian you can use\-: 
+\begin{DoxyCode}
+\textcolor{preprocessor}{# apt-get install libopencv-dev libcv-dev}
+\end{DoxyCode}
+
+
+\section*{I\-N\-S\-T\-A\-L\-L\-A\-T\-I\-O\-N }
+
+cd to the posternn directory then type the following command\-: 
+\begin{DoxyCode}
+$ cmake . && make
+\end{DoxyCode}
+
+
+Done! The programm was successfully compiled and executed on\-:
+\begin{DoxyItemize}
+\item debian 8
+\item ubuntu 14.\-04
+\item ubuntu 15.\-04
+\item arch linux
+\end{DoxyItemize}
+
+If you encounter any issue during the installation please contact me at \href{mailto:mathieu.fourcroy@gmail.com}{\tt mathieu.\-fourcroy@gmail.\-com}
+
+\section*{U\-S\-A\-G\-E E\-X\-A\-M\-P\-L\-E }
+
+The program except one mandatory option\-:
+\begin{DoxyItemize}
+\item -\/i which specify the image to posterized. The two others options are optional\-:
+\item -\/l specify the posterization level (the smaller the level the less colors in the posterized image). Default value is 2.
+\item -\/e Specify the number of iterations of the network.
+\item -\/t Specify the network threshold value. This is a stop condition for the iterating loop. If the network delta value ver fell under this threshold value, the loop is breaked.
+\item -\/o Specify the output path of the posterized image. Default is the directory of the input image.
+\end{DoxyItemize}
+
+The 'imgs' folder contains a sample set of images. Each images comes with it posterized version. You can use one of these images to test the program or choose an image file on your machine. For instance\-:
+
+\$ ./posternn -\/i ./imgs/car.jpg
+
+Which will output the file /imgs/car\-\_\-posterized.jpg. The posterized image level is 2.
+
+Or you can specify the posterization level and/or the output path\-:
+
+\$ ./posternn -\/i ./imgs/car.jpg -\/l 4 -\/o ./newdir/car\-\_\-posterized\-\_\-level\-\_\-4.jpg 

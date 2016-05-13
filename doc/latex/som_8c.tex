@@ -1,0 +1,430 @@
+\hypertarget{som_8c}{\section{src/som.c File Reference}
+\label{som_8c}\index{src/som.\-c@{src/som.\-c}}
+}
+
+
+Contains functions about the self organized map neural network implemented for the project.  
+
+
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$time.\-h$>$}\\*
+{\ttfamily \#include $<$math.\-h$>$}\\*
+{\ttfamily \#include $<$limits.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}som.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}arr.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}util.\-h\char`\"{}}\\*
+Include dependency graph for som.\-c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{som_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static float \hyperlink{som_8c_a577de332dd926969d02e86228f65ad8f}{som\-\_\-radius} (int iter\-No, int iter\-Count, int width, int height)
+\item 
+static float \hyperlink{som_8c_ad269dc9f88dff13ec50497edc5bde2b0}{som\-\_\-learning\-\_\-rate} (int iter\-No, int iter\-Count)
+\item 
+static int \hyperlink{som_8c_a299abea75e13175cea5a3dbe748c65a1}{euclidian} (float $\ast$res, size\-\_\-t size, float $\ast$x, float $\ast$y, float $\ast$z, float $\ast$R\-G\-B)
+\item 
+static float \hyperlink{som_8c_a1b36e26588b00c18c3b967366b63bca4}{compute\-\_\-distance} (int i, int y, int j, int x)
+\item 
+static void \hyperlink{som_8c_a1603f0fc083688b151b2ad414f9120a5}{som\-\_\-neighbourhood} (float $\ast$neigh, int x, int y, float radius, int width, int height)
+\item 
+void \hyperlink{som_8c_a392441531c1d2025232854783e7014bf}{compute\-\_\-delta} (float $\ast$res, float eta, float $\ast$neigh, size\-\_\-t nb\-Neigh, float chan, float $\ast$chan\-Arr)
+\item 
+int \hyperlink{som_8c_ab268269d2bda7d28482c0627e7c102ab}{som\-\_\-train} (float $\ast$$\ast$res, float $\ast$$\ast$img\-Pixels, unsigned int nb\-Pixels, int nb\-Neurons, int no\-Epoch, float thresh)
+\item 
+void \hyperlink{som_8c_a3e18491e97ad6c14f54ba35aabfab994}{som\-\_\-posterize} (float $\ast$$\ast$post\-Pixels, float $\ast$$\ast$orig\-Pixels, float $\ast$train\mbox{[}$\,$\mbox{]}, unsigned int nb\-Pixels, int nb\-Neurons)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains functions about the self organized map neural network implemented for the project. \begin{DoxyAuthor}{Author}
+Mathieu Fourcroy 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+07/15 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{som_8c_a392441531c1d2025232854783e7014bf}{\index{som.\-c@{som.\-c}!compute\-\_\-delta@{compute\-\_\-delta}}
+\index{compute\-\_\-delta@{compute\-\_\-delta}!som.c@{som.\-c}}
+\subsubsection[{compute\-\_\-delta}]{\setlength{\rightskip}{0pt plus 5cm}void compute\-\_\-delta (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{res, }
+\item[{float}]{eta, }
+\item[{float $\ast$}]{neigh, }
+\item[{size\-\_\-t}]{nb\-Neigh, }
+\item[{float}]{chan, }
+\item[{float $\ast$}]{chan\-Arr}
+\end{DoxyParamCaption}
+)}}\label{som_8c_a392441531c1d2025232854783e7014bf}
+Compute the new neurons values (learning stage).
+
+This function compute the new neurons values depending on the learning rate (eta), the winner neighboors (neigh) and the choosed input vector (chan). The network wieght vectors inside the neighbooring radius are modified so that they will be more similar to the choosen input vector.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em res} & The resulting array containing the delta values. \\
+\hline
+\mbox{\tt in}  & {\em eta} & The learning rate. \\
+\hline
+\mbox{\tt in}  & {\em neigh} & Array listing the current neighbors of the network. \\
+\hline
+\mbox{\tt in}  & {\em nb\-Neigh} & The size of the \char`\"{}neigh\char`\"{} array. \\
+\hline
+\mbox{\tt in}  & {\em chan} & The value of the color channel. \\
+\hline
+\mbox{\tt in}  & {\em chan\-Arr} & The array corresponding to the given channel. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{som_8c_a392441531c1d2025232854783e7014bf_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{som_8c_a1b36e26588b00c18c3b967366b63bca4}{\index{som.\-c@{som.\-c}!compute\-\_\-distance@{compute\-\_\-distance}}
+\index{compute\-\_\-distance@{compute\-\_\-distance}!som.c@{som.\-c}}
+\subsubsection[{compute\-\_\-distance}]{\setlength{\rightskip}{0pt plus 5cm}static float compute\-\_\-distance (
+\begin{DoxyParamCaption}
+\item[{int}]{i, }
+\item[{int}]{y, }
+\item[{int}]{j, }
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{som_8c_a1b36e26588b00c18c3b967366b63bca4}
+Compute the euclidian distance between two 2\-D points.
+
+\begin{DoxySeeAlso}{See Also}
+\href{https://en.wikipedia.org/wiki/Euclidean_distance}{\tt https\-://en.\-wikipedia.\-org/wiki/\-Euclidean\-\_\-distance}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em i} & The first point abscissae. \\
+\hline
+\mbox{\tt in}  & {\em y} & The first point ordinates. \\
+\hline
+\mbox{\tt in}  & {\em j} & The second point abscissae. \\
+\hline
+\mbox{\tt in}  & {\em x} & The second point ordinates.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The euclidian distance between the points (i, j) and (y, x). 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{som_8c_a1b36e26588b00c18c3b967366b63bca4_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{som_8c_a299abea75e13175cea5a3dbe748c65a1}{\index{som.\-c@{som.\-c}!euclidian@{euclidian}}
+\index{euclidian@{euclidian}!som.c@{som.\-c}}
+\subsubsection[{euclidian}]{\setlength{\rightskip}{0pt plus 5cm}static int euclidian (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{res, }
+\item[{size\-\_\-t}]{size, }
+\item[{float $\ast$}]{x, }
+\item[{float $\ast$}]{y, }
+\item[{float $\ast$}]{z, }
+\item[{float $\ast$}]{R\-G\-B}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{som_8c_a299abea75e13175cea5a3dbe748c65a1}
+Compute the Euclidian distance between weight vectors and input vector.
+
+The Euclidean distance between points p and q is the length of the line segment connecting them.
+
+\begin{DoxySeeAlso}{See Also}
+\href{https://en.wikipedia.org/wiki/Euclidean_distance}{\tt https\-://en.\-wikipedia.\-org/wiki/\-Euclidean\-\_\-distance}.
+\end{DoxySeeAlso}
+The two points here are (x, y, z) and (R\-G\-B\mbox{[}0\mbox{]}, R\-G\-B\mbox{[}1\mbox{]}, R\-G\-B\mbox{[}2\mbox{]}).
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em res} & The array which will contain the euclidian distance. It must be of size 'size'. \\
+\hline
+\mbox{\tt in}  & {\em size} & Size of the 'x', 'y', 'z' and 'res' arrays. \\
+\hline
+\mbox{\tt in}  & {\em x} & The x 3\-D coordinates. \\
+\hline
+\mbox{\tt in}  & {\em y} & The y 3\-D coordinates. \\
+\hline
+\mbox{\tt in}  & {\em z} & The z 3\-D coordinates. \\
+\hline
+\mbox{\tt in}  & {\em R\-G\-B} & The array containing the three channels values, treated as coordinates.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\-O\-M\-\_\-\-O\-K if everything goes right or S\-O\-M\-\_\-\-N\-O\-\_\-\-M\-E\-M\-O\-R\-Y if a memory allocation (malloc) fail. 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{som_8c_a299abea75e13175cea5a3dbe748c65a1_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{som_8c_a299abea75e13175cea5a3dbe748c65a1_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{som_8c_ad269dc9f88dff13ec50497edc5bde2b0}{\index{som.\-c@{som.\-c}!som\-\_\-learning\-\_\-rate@{som\-\_\-learning\-\_\-rate}}
+\index{som\-\_\-learning\-\_\-rate@{som\-\_\-learning\-\_\-rate}!som.c@{som.\-c}}
+\subsubsection[{som\-\_\-learning\-\_\-rate}]{\setlength{\rightskip}{0pt plus 5cm}static float som\-\_\-learning\-\_\-rate (
+\begin{DoxyParamCaption}
+\item[{int}]{iter\-No, }
+\item[{int}]{iter\-Count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{som_8c_ad269dc9f88dff13ec50497edc5bde2b0}
+Compute and returns the learning rate of the network.
+
+The learning rate is a function of the current iteration number over the maximum iterations number and a given range.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em iter\-No} & The number of the current iteration. \\
+\hline
+\mbox{\tt in}  & {\em iter\-Count} & The maximum number of iterations.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The computed learning rate. 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{som_8c_ad269dc9f88dff13ec50497edc5bde2b0_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{som_8c_a1603f0fc083688b151b2ad414f9120a5}{\index{som.\-c@{som.\-c}!som\-\_\-neighbourhood@{som\-\_\-neighbourhood}}
+\index{som\-\_\-neighbourhood@{som\-\_\-neighbourhood}!som.c@{som.\-c}}
+\subsubsection[{som\-\_\-neighbourhood}]{\setlength{\rightskip}{0pt plus 5cm}static void som\-\_\-neighbourhood (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{neigh, }
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{float}]{radius, }
+\item[{int}]{width, }
+\item[{int}]{height}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{som_8c_a1603f0fc083688b151b2ad414f9120a5}
+Compute the neighbors of a given point which are in a given radius.
+
+Generates a mask with \mbox{[}0, 1\mbox{]} values to activate the inside of the 'radius' radius circle centered in (x, y).
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em neigh} & The resulting mask array. \\
+\hline
+\mbox{\tt in}  & {\em x} & The abscissae of the radius center. \\
+\hline
+\mbox{\tt in}  & {\em y} & The ordinates of the radius center. \\
+\hline
+\mbox{\tt in}  & {\em radius} & The neighbooring radius. \\
+\hline
+\mbox{\tt in}  & {\em width} & The width of the network. \\
+\hline
+\mbox{\tt in}  & {\em height} & The height of the network. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{som_8c_a1603f0fc083688b151b2ad414f9120a5_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{som_8c_a1603f0fc083688b151b2ad414f9120a5_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{som_8c_a3e18491e97ad6c14f54ba35aabfab994}{\index{som.\-c@{som.\-c}!som\-\_\-posterize@{som\-\_\-posterize}}
+\index{som\-\_\-posterize@{som\-\_\-posterize}!som.c@{som.\-c}}
+\subsubsection[{som\-\_\-posterize}]{\setlength{\rightskip}{0pt plus 5cm}void som\-\_\-posterize (
+\begin{DoxyParamCaption}
+\item[{float $\ast$$\ast$}]{post\-Pixels, }
+\item[{float $\ast$$\ast$}]{orig\-Pixels, }
+\item[{float $\ast$}]{train\mbox{[}$\,$\mbox{]}, }
+\item[{unsigned int}]{nb\-Pixels, }
+\item[{int}]{nb\-Neurons}
+\end{DoxyParamCaption}
+)}}\label{som_8c_a3e18491e97ad6c14f54ba35aabfab994}
+Posterize an image from the trained S\-O\-M otput.
+
+This function fill a vector containing the R\-G\-B values of each pixels of an image with the output of a trained S\-O\-M. The original image pixels R\-G\-B values are needed to compute the euclidian distance from its colors to the trained S\-I\-O\-M output colors. Basicaly you can see this function job as a smart color selector. For each pixel of the original image the function compute the \char`\"{}nearest\char`\"{} color among the reduced set of olors of the S\-O\-M output.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em post\-Pixels} & The 2\-D array wich will contains the posterized pixels. \\
+\hline
+\mbox{\tt in}  & {\em orig\-Pixels} & The original image pixels. \\
+\hline
+\mbox{\tt in}  & {\em train} & The trained S\-O\-M output vector (its map). \\
+\hline
+\mbox{\tt in}  & {\em nb\-Pixels} & The number of pixels of th image (height $\ast$ width). \\
+\hline
+\mbox{\tt in}  & {\em nb\-Neurons} & The posterization level defined by its number of neurons. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{som_8c_a3e18491e97ad6c14f54ba35aabfab994_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{som_8c_a3e18491e97ad6c14f54ba35aabfab994_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{som_8c_a577de332dd926969d02e86228f65ad8f}{\index{som.\-c@{som.\-c}!som\-\_\-radius@{som\-\_\-radius}}
+\index{som\-\_\-radius@{som\-\_\-radius}!som.c@{som.\-c}}
+\subsubsection[{som\-\_\-radius}]{\setlength{\rightskip}{0pt plus 5cm}static float som\-\_\-radius (
+\begin{DoxyParamCaption}
+\item[{int}]{iter\-No, }
+\item[{int}]{iter\-Count, }
+\item[{int}]{width, }
+\item[{int}]{height}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{som_8c_a577de332dd926969d02e86228f65ad8f}
+Compute and returns the neighbour radius value.
+
+The radius is computed given the current iteration number, the maximum iteration number and the dimmensions of the network.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em iter\-No} & The number of the current iteration. \\
+\hline
+\mbox{\tt in}  & {\em iter\-Count} & The maximum number of iterations. \\
+\hline
+\mbox{\tt in}  & {\em width} & The width of the network. \\
+\hline
+\mbox{\tt in}  & {\em height} & The height of the network.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The computed radius. 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{som_8c_a577de332dd926969d02e86228f65ad8f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{som_8c_ab268269d2bda7d28482c0627e7c102ab}{\index{som.\-c@{som.\-c}!som\-\_\-train@{som\-\_\-train}}
+\index{som\-\_\-train@{som\-\_\-train}!som.c@{som.\-c}}
+\subsubsection[{som\-\_\-train}]{\setlength{\rightskip}{0pt plus 5cm}int som\-\_\-train (
+\begin{DoxyParamCaption}
+\item[{float $\ast$$\ast$}]{res, }
+\item[{float $\ast$$\ast$}]{img\-Pixels, }
+\item[{unsigned int}]{nb\-Pixels, }
+\item[{int}]{nb\-Neurons, }
+\item[{int}]{no\-Epoch, }
+\item[{float}]{thresh}
+\end{DoxyParamCaption}
+)}}\label{som_8c_ab268269d2bda7d28482c0627e7c102ab}
+Train the unsupervised S\-O\-M network.
+
+The network is initialized with random (non-\/graduate) values. It is then trained with the image pixels (R\-G\-B). Once the network is done training the centroids of the resulting clusters is returned.
+
+\begin{DoxyNote}{Note}
+The length of the clusters depends on the parameter 'n'. The greatest n, the more colors in the clusters, the less posterized the image.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em res} & The resulting R, G and B clusters centroids. \\
+\hline
+\mbox{\tt in}  & {\em img\-Pixels} & The original image pixels. \\
+\hline
+\mbox{\tt in}  & {\em nb\-Pixels} & The number of pixels of th image (height $\ast$ width). \\
+\hline
+\mbox{\tt in}  & {\em nb\-Neurons} & The posterization leveldefined by its number of neurons. \\
+\hline
+\mbox{\tt in}  & {\em no\-Epoch} & Number of training passes (a too small number of epochs won't be enough for the network to correctly know the image but a too high value will force the network to modify the wieghts so much that the image can actually looks \char`\"{}ugly\char`\"{}). \\
+\hline
+\mbox{\tt in}  & {\em thresh} & The threshold value. The S\-O\-M delta parameter and the training rate are dicreasing from one epoch to the next. The treshold value set a stop condifition in case the value has fallen under this minimum value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\-O\-M\-\_\-\-O\-K if everything goes right or S\-O\-M\-\_\-\-N\-O\-\_\-\-M\-E\-M\-O\-R\-Y if a memory allocation (malloc) fail. 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{som_8c_ab268269d2bda7d28482c0627e7c102ab_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{som_8c_ab268269d2bda7d28482c0627e7c102ab_icgraph}
+\end{center}
+\end{figure}
+
+

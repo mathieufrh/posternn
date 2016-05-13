@@ -8,13 +8,10 @@ add_executable(
     posternn
     ${SRCS})
 
-add_definitions(-Wall -O3)
+add_definitions(-Wall -g -O0)
 
 target_link_libraries(
-        posternn
-        GLU
-        SDL
-        SDL_mixer)
+        posternn)
 
 target_link_libraries(
     posternn

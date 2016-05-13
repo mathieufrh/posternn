@@ -1,0 +1,240 @@
+\hypertarget{arr_8h}{\section{src/arr.h File Reference}
+\label{arr_8h}\index{src/arr.\-h@{src/arr.\-h}}
+}
+{\ttfamily \#include $<$opencv/cv.\-h$>$}\\*
+Include dependency graph for arr.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=150pt]{arr_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arr_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{arr_8h_a1e06cf9c399bc46a3053d007b27d4b8a}{arr\-\_\-sub} (float $\ast$dst, float $\ast$src, size\-\_\-t size, float f)
+\item 
+void \hyperlink{arr_8h_a5a5edd40e86c7ab2dbc6a47eecad7e60}{arr\-\_\-add} (float dst\mbox{[}$\,$\mbox{]}, float src\mbox{[}$\,$\mbox{]}, size\-\_\-t size)
+\item 
+void \hyperlink{arr_8h_af4a473c67a36913419215a574e0d06eb}{arr\-\_\-abs} (float $\ast$dst, float $\ast$src, size\-\_\-t size)
+\item 
+float \hyperlink{arr_8h_a6c0fddffe790f7e4e09e3e2d283f3813}{arr\-\_\-sum} (float $\ast$arr, size\-\_\-t size)
+\item 
+size\-\_\-t \hyperlink{arr_8h_aabea581597f4de853707a7af358fc66c}{arr\-\_\-min\-\_\-idx} (const float $\ast$arr, size\-\_\-t size)
+\item 
+void \hyperlink{arr_8h_ae906b13d297231fed02b4c779d90a08b}{arr\-\_\-to\-\_\-\-Ipl\-Image} (Ipl\-Image $\ast$img, float $\ast$$\ast$arr, int height, int width, int channels)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{arr_8h_af4a473c67a36913419215a574e0d06eb}{\index{arr.\-h@{arr.\-h}!arr\-\_\-abs@{arr\-\_\-abs}}
+\index{arr\-\_\-abs@{arr\-\_\-abs}!arr.h@{arr.\-h}}
+\subsubsection[{arr\-\_\-abs}]{\setlength{\rightskip}{0pt plus 5cm}void arr\-\_\-abs (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{dst, }
+\item[{float $\ast$}]{src, }
+\item[{size\-\_\-t}]{size}
+\end{DoxyParamCaption}
+)}}\label{arr_8h_af4a473c67a36913419215a574e0d06eb}
+Compute the absolute value of every elements of a given array.
+
+\begin{DoxyNote}{Note}
+The two arrays should have the same size which is 'size'.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em dst} & The array which will contains the result\-: the absolute values of 'src' elements.. \\
+\hline
+\mbox{\tt in}  & {\em src} & The initial array. \\
+\hline
+\mbox{\tt in}  & {\em size} & The size of the arrays. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{arr_8h_af4a473c67a36913419215a574e0d06eb_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{arr_8h_a5a5edd40e86c7ab2dbc6a47eecad7e60}{\index{arr.\-h@{arr.\-h}!arr\-\_\-add@{arr\-\_\-add}}
+\index{arr\-\_\-add@{arr\-\_\-add}!arr.h@{arr.\-h}}
+\subsubsection[{arr\-\_\-add}]{\setlength{\rightskip}{0pt plus 5cm}void arr\-\_\-add (
+\begin{DoxyParamCaption}
+\item[{float}]{dst\mbox{[}$\,$\mbox{]}, }
+\item[{float}]{src\mbox{[}$\,$\mbox{]}, }
+\item[{size\-\_\-t}]{size}
+\end{DoxyParamCaption}
+)}}\label{arr_8h_a5a5edd40e86c7ab2dbc6a47eecad7e60}
+Compute the sum of two arrays.
+
+\begin{DoxyWarning}{Warning}
+The content of the 'dst' array will be modified to contains 'dst' + 'src'..
+\end{DoxyWarning}
+\begin{DoxyNote}{Note}
+The two arrays should have the same size which is 'size'.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em dst} & The first array of the sum. It will contains the result. \\
+\hline
+\mbox{\tt in}  & {\em src} & The second array of the sum. \\
+\hline
+\mbox{\tt in}  & {\em size} & The size of the arrays. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{arr_8h_a5a5edd40e86c7ab2dbc6a47eecad7e60_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{arr_8h_aabea581597f4de853707a7af358fc66c}{\index{arr.\-h@{arr.\-h}!arr\-\_\-min\-\_\-idx@{arr\-\_\-min\-\_\-idx}}
+\index{arr\-\_\-min\-\_\-idx@{arr\-\_\-min\-\_\-idx}!arr.h@{arr.\-h}}
+\subsubsection[{arr\-\_\-min\-\_\-idx}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t arr\-\_\-min\-\_\-idx (
+\begin{DoxyParamCaption}
+\item[{const float $\ast$}]{arr, }
+\item[{size\-\_\-t}]{size}
+\end{DoxyParamCaption}
+)}}\label{arr_8h_aabea581597f4de853707a7af358fc66c}
+Find and returns the index of the minimum value in the given array.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em arr} & The array. \\
+\hline
+\mbox{\tt in}  & {\em size} & The array size.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The index of the lowest value of the array 'arr'. 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{arr_8h_aabea581597f4de853707a7af358fc66c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{arr_8h_a1e06cf9c399bc46a3053d007b27d4b8a}{\index{arr.\-h@{arr.\-h}!arr\-\_\-sub@{arr\-\_\-sub}}
+\index{arr\-\_\-sub@{arr\-\_\-sub}!arr.h@{arr.\-h}}
+\subsubsection[{arr\-\_\-sub}]{\setlength{\rightskip}{0pt plus 5cm}void arr\-\_\-sub (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{dst, }
+\item[{float $\ast$}]{src, }
+\item[{size\-\_\-t}]{size, }
+\item[{float}]{f}
+\end{DoxyParamCaption}
+)}}\label{arr_8h_a1e06cf9c399bc46a3053d007b27d4b8a}
+Subtract a given float to every elements of a float array.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em dst} & The destination array which will contains the resulting values. It must be of same size as 'src'. \\
+\hline
+\mbox{\tt in}  & {\em src} & The source array from which the results will be computed. \\
+\hline
+\mbox{\tt in}  & {\em size} & The size of the 'dst' and 'src' arrays. \\
+\hline
+\mbox{\tt in}  & {\em f} & The float number which will be subtract to every elements of the 'src' array. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{arr_8h_a1e06cf9c399bc46a3053d007b27d4b8a_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{arr_8h_a6c0fddffe790f7e4e09e3e2d283f3813}{\index{arr.\-h@{arr.\-h}!arr\-\_\-sum@{arr\-\_\-sum}}
+\index{arr\-\_\-sum@{arr\-\_\-sum}!arr.h@{arr.\-h}}
+\subsubsection[{arr\-\_\-sum}]{\setlength{\rightskip}{0pt plus 5cm}float arr\-\_\-sum (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{arr, }
+\item[{size\-\_\-t}]{size}
+\end{DoxyParamCaption}
+)}}\label{arr_8h_a6c0fddffe790f7e4e09e3e2d283f3813}
+Compute and returns the sum of every elements of a given array.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em arr} & The array to sum. \\
+\hline
+\mbox{\tt in}  & {\em size} & The size of the arrays.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The sum of every elements of the given array of size 'size'. 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{arr_8h_a6c0fddffe790f7e4e09e3e2d283f3813_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{arr_8h_ae906b13d297231fed02b4c779d90a08b}{\index{arr.\-h@{arr.\-h}!arr\-\_\-to\-\_\-\-Ipl\-Image@{arr\-\_\-to\-\_\-\-Ipl\-Image}}
+\index{arr\-\_\-to\-\_\-\-Ipl\-Image@{arr\-\_\-to\-\_\-\-Ipl\-Image}!arr.h@{arr.\-h}}
+\subsubsection[{arr\-\_\-to\-\_\-\-Ipl\-Image}]{\setlength{\rightskip}{0pt plus 5cm}void arr\-\_\-to\-\_\-\-Ipl\-Image (
+\begin{DoxyParamCaption}
+\item[{Ipl\-Image $\ast$}]{img, }
+\item[{float $\ast$$\ast$}]{arr, }
+\item[{int}]{height, }
+\item[{int}]{width, }
+\item[{int}]{channels}
+\end{DoxyParamCaption}
+)}}\label{arr_8h_ae906b13d297231fed02b4c779d90a08b}
+Flatten a 2\-D array and modify the given image data.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em img} & The image wich will be modified with the data of 'arr'. \\
+\hline
+\mbox{\tt in}  & {\em arr} & The 2\-D array containing the posterized pixels. \\
+\hline
+\mbox{\tt in}  & {\em height} & The image height. \\
+\hline
+\mbox{\tt in}  & {\em width} & The image width. \\
+\hline
+\mbox{\tt in}  & {\em channels} & The number of channels of the image. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{arr_8h_ae906b13d297231fed02b4c779d90a08b_icgraph}
+\end{center}
+\end{figure}
+
+

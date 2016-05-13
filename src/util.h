@@ -4,7 +4,7 @@
 /*====| INCLUDES |============================================================*/
 #include <string.h>
 
-/*====| DEFINE |==============================================================*/
+/*====| DEFINES |=============================================================*/
 #define max(a,b) \
         ({ __typeof__ (a) _a = (a); \
         __typeof__ (b) _b = (b); \
@@ -14,7 +14,5 @@
 void random_sample(float *arr, size_t size);
 unsigned int random_uint (unsigned int max);
 const char *get_filename_ext(const char *filename);
-void euclidian(float *res, size_t size, float *x, float *y, float *z,
-               float *rgb);
 
 #endif

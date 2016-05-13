@@ -1,0 +1,197 @@
+\hypertarget{som_8h}{\section{src/som.h File Reference}
+\label{som_8h}\index{src/som.\-h@{src/som.\-h}}
+}
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+Include dependency graph for som.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=138pt]{som_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{som_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{som_8h_ad2eb1fccbbafb6e5677c3d9ce2f5e0f7}{S\-O\-M\-\_\-\-N\-O\-\_\-\-M\-E\-M\-O\-R\-Y}~10
+\item 
+\#define \hyperlink{som_8h_a716494233ffdd2f324d12f608c0c03ae}{S\-O\-M\-\_\-\-O\-K}~0
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{som_8h_a392441531c1d2025232854783e7014bf}{compute\-\_\-delta} (float $\ast$res, float eta, float $\ast$neigh, size\-\_\-t nb\-Neigh, float chan, float $\ast$chan\-Arr)
+\item 
+int \hyperlink{som_8h_a0ef1fd049a245484d40c3ba9e5f8a636}{som\-\_\-train} (float $\ast$$\ast$res, float $\ast$$\ast$img\-Pixels, unsigned int nb\-Pixels, int nb\-Neurons, int no\-Epoch, float tresh)
+\item 
+void \hyperlink{som_8h_a3e18491e97ad6c14f54ba35aabfab994}{som\-\_\-posterize} (float $\ast$$\ast$post\-Pixels, float $\ast$$\ast$orig\-Pixels, float $\ast$train\mbox{[}$\,$\mbox{]}, unsigned int nb\-Pixels, int nb\-Neurons)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{som_8h_ad2eb1fccbbafb6e5677c3d9ce2f5e0f7}{\index{som.\-h@{som.\-h}!S\-O\-M\-\_\-\-N\-O\-\_\-\-M\-E\-M\-O\-R\-Y@{S\-O\-M\-\_\-\-N\-O\-\_\-\-M\-E\-M\-O\-R\-Y}}
+\index{S\-O\-M\-\_\-\-N\-O\-\_\-\-M\-E\-M\-O\-R\-Y@{S\-O\-M\-\_\-\-N\-O\-\_\-\-M\-E\-M\-O\-R\-Y}!som.h@{som.\-h}}
+\subsubsection[{S\-O\-M\-\_\-\-N\-O\-\_\-\-M\-E\-M\-O\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-O\-M\-\_\-\-N\-O\-\_\-\-M\-E\-M\-O\-R\-Y~10}}\label{som_8h_ad2eb1fccbbafb6e5677c3d9ce2f5e0f7}
+\hypertarget{som_8h_a716494233ffdd2f324d12f608c0c03ae}{\index{som.\-h@{som.\-h}!S\-O\-M\-\_\-\-O\-K@{S\-O\-M\-\_\-\-O\-K}}
+\index{S\-O\-M\-\_\-\-O\-K@{S\-O\-M\-\_\-\-O\-K}!som.h@{som.\-h}}
+\subsubsection[{S\-O\-M\-\_\-\-O\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-O\-M\-\_\-\-O\-K~0}}\label{som_8h_a716494233ffdd2f324d12f608c0c03ae}
+
+
+\subsection{Function Documentation}
+\hypertarget{som_8h_a392441531c1d2025232854783e7014bf}{\index{som.\-h@{som.\-h}!compute\-\_\-delta@{compute\-\_\-delta}}
+\index{compute\-\_\-delta@{compute\-\_\-delta}!som.h@{som.\-h}}
+\subsubsection[{compute\-\_\-delta}]{\setlength{\rightskip}{0pt plus 5cm}void compute\-\_\-delta (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{res, }
+\item[{float}]{eta, }
+\item[{float $\ast$}]{neigh, }
+\item[{size\-\_\-t}]{nb\-Neigh, }
+\item[{float}]{chan, }
+\item[{float $\ast$}]{chan\-Arr}
+\end{DoxyParamCaption}
+)}}\label{som_8h_a392441531c1d2025232854783e7014bf}
+Compute the new neurons values (learning stage).
+
+This function compute the new neurons values depending on the learning rate (eta), the winner neighboors (neigh) and the choosed input vector (chan). The network wieght vectors inside the neighbooring radius are modified so that they will be more similar to the choosen input vector.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em res} & The resulting array containing the delta values. \\
+\hline
+\mbox{\tt in}  & {\em eta} & The learning rate. \\
+\hline
+\mbox{\tt in}  & {\em neigh} & Array listing the current neighbors of the network. \\
+\hline
+\mbox{\tt in}  & {\em nb\-Neigh} & The size of the \char`\"{}neigh\char`\"{} array. \\
+\hline
+\mbox{\tt in}  & {\em chan} & The value of the color channel. \\
+\hline
+\mbox{\tt in}  & {\em chan\-Arr} & The array corresponding to the given channel. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{som_8h_a392441531c1d2025232854783e7014bf_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{som_8h_a3e18491e97ad6c14f54ba35aabfab994}{\index{som.\-h@{som.\-h}!som\-\_\-posterize@{som\-\_\-posterize}}
+\index{som\-\_\-posterize@{som\-\_\-posterize}!som.h@{som.\-h}}
+\subsubsection[{som\-\_\-posterize}]{\setlength{\rightskip}{0pt plus 5cm}void som\-\_\-posterize (
+\begin{DoxyParamCaption}
+\item[{float $\ast$$\ast$}]{post\-Pixels, }
+\item[{float $\ast$$\ast$}]{orig\-Pixels, }
+\item[{float $\ast$}]{train\mbox{[}$\,$\mbox{]}, }
+\item[{unsigned int}]{nb\-Pixels, }
+\item[{int}]{nb\-Neurons}
+\end{DoxyParamCaption}
+)}}\label{som_8h_a3e18491e97ad6c14f54ba35aabfab994}
+Posterize an image from the trained S\-O\-M otput.
+
+This function fill a vector containing the R\-G\-B values of each pixels of an image with the output of a trained S\-O\-M. The original image pixels R\-G\-B values are needed to compute the euclidian distance from its colors to the trained S\-I\-O\-M output colors. Basicaly you can see this function job as a smart color selector. For each pixel of the original image the function compute the \char`\"{}nearest\char`\"{} color among the reduced set of olors of the S\-O\-M output.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em post\-Pixels} & The 2\-D array wich will contains the posterized pixels. \\
+\hline
+\mbox{\tt in}  & {\em orig\-Pixels} & The original image pixels. \\
+\hline
+\mbox{\tt in}  & {\em train} & The trained S\-O\-M output vector (its map). \\
+\hline
+\mbox{\tt in}  & {\em nb\-Pixels} & The number of pixels of th image (height $\ast$ width). \\
+\hline
+\mbox{\tt in}  & {\em nb\-Neurons} & The posterization level defined by its number of neurons. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{som_8h_a3e18491e97ad6c14f54ba35aabfab994_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{som_8h_a3e18491e97ad6c14f54ba35aabfab994_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{som_8h_a0ef1fd049a245484d40c3ba9e5f8a636}{\index{som.\-h@{som.\-h}!som\-\_\-train@{som\-\_\-train}}
+\index{som\-\_\-train@{som\-\_\-train}!som.h@{som.\-h}}
+\subsubsection[{som\-\_\-train}]{\setlength{\rightskip}{0pt plus 5cm}int som\-\_\-train (
+\begin{DoxyParamCaption}
+\item[{float $\ast$$\ast$}]{res, }
+\item[{float $\ast$$\ast$}]{img\-Pixels, }
+\item[{unsigned int}]{nb\-Pixels, }
+\item[{int}]{nb\-Neurons, }
+\item[{int}]{no\-Epoch, }
+\item[{float}]{thresh}
+\end{DoxyParamCaption}
+)}}\label{som_8h_a0ef1fd049a245484d40c3ba9e5f8a636}
+Train the unsupervised S\-O\-M network.
+
+The network is initialized with random (non-\/graduate) values. It is then trained with the image pixels (R\-G\-B). Once the network is done training the centroids of the resulting clusters is returned.
+
+\begin{DoxyNote}{Note}
+The length of the clusters depends on the parameter 'n'. The greatest n, the more colors in the clusters, the less posterized the image.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em res} & The resulting R, G and B clusters centroids. \\
+\hline
+\mbox{\tt in}  & {\em img\-Pixels} & The original image pixels. \\
+\hline
+\mbox{\tt in}  & {\em nb\-Pixels} & The number of pixels of th image (height $\ast$ width). \\
+\hline
+\mbox{\tt in}  & {\em nb\-Neurons} & The posterization leveldefined by its number of neurons. \\
+\hline
+\mbox{\tt in}  & {\em no\-Epoch} & Number of training passes (a too small number of epochs won't be enough for the network to correctly know the image but a too high value will force the network to modify the wieghts so much that the image can actually looks \char`\"{}ugly\char`\"{}). \\
+\hline
+\mbox{\tt in}  & {\em thresh} & The threshold value. The S\-O\-M delta parameter and the training rate are dicreasing from one epoch to the next. The treshold value set a stop condifition in case the value has fallen under this minimum value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\-O\-M\-\_\-\-O\-K if everything goes right or S\-O\-M\-\_\-\-N\-O\-\_\-\-M\-E\-M\-O\-R\-Y if a memory allocation (malloc) fail. 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{som_8h_a0ef1fd049a245484d40c3ba9e5f8a636_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{som_8h_a0ef1fd049a245484d40c3ba9e5f8a636_icgraph}
+\end{center}
+\end{figure}
+
+

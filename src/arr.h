@@ -9,8 +9,8 @@ void arr_sub(float *dst, float *src, size_t size, float f);
 void arr_add(float dst[], float src[], size_t size);
 void arr_abs(float *dst, float *src, size_t size);
 float arr_sum(float *arr, size_t size);
-float arr_min_idx(const float *arr, size_t size);
-void arr_flatten(IplImage *img, float **arr, int height, int width,
-                 int channels, int step);
+size_t arr_min_idx(const float *arr, size_t size);
+void arr_to_IplImage(IplImage *img, float **arr, int height, int width,
+                     int channels);
 
 #endif

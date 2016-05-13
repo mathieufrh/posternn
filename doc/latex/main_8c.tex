@@ -1,0 +1,146 @@
+\hypertarget{main_8c}{\section{src/main.c File Reference}
+\label{main_8c}\index{src/main.\-c@{src/main.\-c}}
+}
+
+
+Main file of the program. Take care of I/\-O and call the other functions.  
+
+
+{\ttfamily \#include $<$opencv/highgui.\-h$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$ctype.\-h$>$}\\*
+{\ttfamily \#include $<$getopt.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}arr.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}som.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}util.\-h\char`\"{}}\\*
+Include dependency graph for main.\-c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{main_8c_ae8605e2b78cd4a81b6c6b5c30cb7366a}{usage} (void)
+\item 
+int \hyperlink{main_8c_a8a30a7c1d99382d3d205b4c924e3dd18}{set\-\_\-vars\-\_\-from\-\_\-args} (int argc, char $\ast$const argv\mbox{[}$\,$\mbox{]}, int $\ast$post\-Level, int $\ast$epochs, float $\ast$thresh, char $\ast$in\-File, char $\ast$out\-File)
+\item 
+int \hyperlink{main_8c_af3ed9c200de85b53c94cd18764b246a2}{main} (int argc, char $\ast$const argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Main file of the program. Take care of I/\-O and call the other functions. \begin{DoxyAuthor}{Author}
+Mathieu Fourcroy 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+07/15 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{main_8c_af3ed9c200de85b53c94cd18764b246a2}{\index{main.\-c@{main.\-c}!main@{main}}
+\index{main@{main}!main.c@{main.\-c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$const}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{main_8c_af3ed9c200de85b53c94cd18764b246a2}
+The main function
+
+The main function scan the command line and set the program variables using the specified options or the default values. Then The function open the image from the input path and load it. Its pixels are extracted. The S\-O\-M network is trained from random values and using the image pixels. The S\-O\-M resulting neurons represent the colors used for the posterization. So the posterization function use the result of the S\-O\-M network to effectively posterized the image. The image pixels are directly modified. Finaly the modified image is saved as a new file.
+
+\begin{DoxyNote}{Note}
+The number of neurons of the network is the posterization level power two. Which means that the S\-O\-M is square. It has a number of rows and a number of columns equal to the posterization level. So it have rows $\ast$ columns = rows$^\wedge$2 = columns$^\wedge$2 = posterization level$^\wedge$2 = number of neurons.
+\end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+The transparency in file formats which support it is not correctly handled.
+\end{DoxyWarning}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000001}{Todo}]0.\-0.\-2 Handle transparency with opencv and the S\-O\-M algorithm. The program currently use the number of channels of the image but it is always 3 (R\-G\-B) for now. \end{DoxyRefDesc}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c_af3ed9c200de85b53c94cd18764b246a2_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{main_8c_a8a30a7c1d99382d3d205b4c924e3dd18}{\index{main.\-c@{main.\-c}!set\-\_\-vars\-\_\-from\-\_\-args@{set\-\_\-vars\-\_\-from\-\_\-args}}
+\index{set\-\_\-vars\-\_\-from\-\_\-args@{set\-\_\-vars\-\_\-from\-\_\-args}!main.c@{main.\-c}}
+\subsubsection[{set\-\_\-vars\-\_\-from\-\_\-args}]{\setlength{\rightskip}{0pt plus 5cm}int set\-\_\-vars\-\_\-from\-\_\-args (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$const}]{argv\mbox{[}$\,$\mbox{]}, }
+\item[{int $\ast$}]{post\-Level, }
+\item[{int $\ast$}]{epochs, }
+\item[{float $\ast$}]{thresh, }
+\item[{char $\ast$}]{in\-File, }
+\item[{char $\ast$}]{out\-File}
+\end{DoxyParamCaption}
+)}}\label{main_8c_a8a30a7c1d99382d3d205b4c924e3dd18}
+Parse the options from the command line.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em argc} & Number of arguments on the command line. \\
+\hline
+\mbox{\tt in}  & {\em argv} & The arguments of the command line. \\
+\hline
+\mbox{\tt out}  & {\em post\-Level} & Posterization level (set by -\/l / default\-: 2). \\
+\hline
+\mbox{\tt out}  & {\em epochs} & Number of training stage (set by -\/e / default\-: 3000). \\
+\hline
+\mbox{\tt out}  & {\em thresh} & Network threshold value (set by -\/t / default\-: 0.\-001). \\
+\hline
+\mbox{\tt out}  & {\em in\-File} & Path to the input image (must be set with -\/i). \\
+\hline
+\mbox{\tt out}  & {\em out\-File} & Path to the output image (set by -\/o). \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{main_8c_a8a30a7c1d99382d3d205b4c924e3dd18_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{main_8c_a8a30a7c1d99382d3d205b4c924e3dd18_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{main_8c_ae8605e2b78cd4a81b6c6b5c30cb7366a}{\index{main.\-c@{main.\-c}!usage@{usage}}
+\index{usage@{usage}!main.c@{main.\-c}}
+\subsubsection[{usage}]{\setlength{\rightskip}{0pt plus 5cm}void usage (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{main_8c_ae8605e2b78cd4a81b6c6b5c30cb7366a}
+Print a usage message. 
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{main_8c_ae8605e2b78cd4a81b6c6b5c30cb7366a_icgraph}
+\end{center}
+\end{figure}
+
+

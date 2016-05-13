@@ -1,0 +1,141 @@
+\hypertarget{util_8h}{\section{src/util.h File Reference}
+\label{util_8h}\index{src/util.\-h@{src/util.\-h}}
+}
+{\ttfamily \#include $<$string.\-h$>$}\\*
+Include dependency graph for util.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=134pt]{util_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{util_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{util_8h_affe776513b24d84b39af8ab0930fef7f}{max}(a, b)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{util_8h_a92c1113e88f00f1fe38f88e29ea085e4}{random\-\_\-sample} (float $\ast$arr, size\-\_\-t size)
+\item 
+unsigned int \hyperlink{util_8h_afd86049c98dab897936e62cc9851a838}{random\-\_\-uint} (unsigned int \hyperlink{util_8h_affe776513b24d84b39af8ab0930fef7f}{max})
+\item 
+const char $\ast$ \hyperlink{util_8h_a06a7e80f6a756ec12b2ac12ea3d5f206}{get\-\_\-filename\-\_\-ext} (const char $\ast$filename)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{util_8h_affe776513b24d84b39af8ab0930fef7f}{\index{util.\-h@{util.\-h}!max@{max}}
+\index{max@{max}!util.h@{util.\-h}}
+\subsubsection[{max}]{\setlength{\rightskip}{0pt plus 5cm}\#define max(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b}
+\end{DoxyParamCaption}
+)}}\label{util_8h_affe776513b24d84b39af8ab0930fef7f}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+(\{ \_\_typeof\_\_ (a) \_a = (a); \(\backslash\)
+        \_\_typeof\_\_ (b) \_b = (b); \(\backslash\)
+        \_a > \_b ? \_a : \_b; \})
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\hypertarget{util_8h_a06a7e80f6a756ec12b2ac12ea3d5f206}{\index{util.\-h@{util.\-h}!get\-\_\-filename\-\_\-ext@{get\-\_\-filename\-\_\-ext}}
+\index{get\-\_\-filename\-\_\-ext@{get\-\_\-filename\-\_\-ext}!util.h@{util.\-h}}
+\subsubsection[{get\-\_\-filename\-\_\-ext}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ get\-\_\-filename\-\_\-ext (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)}}\label{util_8h_a06a7e80f6a756ec12b2ac12ea3d5f206}
+Determine the extension (format) of a file.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em filename} & The file name or its full path.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The file extension (for instance jpg or png). 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{util_8h_a06a7e80f6a756ec12b2ac12ea3d5f206_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{util_8h_a92c1113e88f00f1fe38f88e29ea085e4}{\index{util.\-h@{util.\-h}!random\-\_\-sample@{random\-\_\-sample}}
+\index{random\-\_\-sample@{random\-\_\-sample}!util.h@{util.\-h}}
+\subsubsection[{random\-\_\-sample}]{\setlength{\rightskip}{0pt plus 5cm}void random\-\_\-sample (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{arr, }
+\item[{size\-\_\-t}]{size}
+\end{DoxyParamCaption}
+)}}\label{util_8h_a92c1113e88f00f1fe38f88e29ea085e4}
+Fill the given array with float numbers between 0 and 1.
+
+\begin{DoxyNote}{Note}
+You must run srand() before in order to initialize the random number generation seed. 
+
+The array 'arr' size must be 'size'.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em arr} & The array to fill. \\
+\hline
+\mbox{\tt in}  & {\em size} & The number of value to add to the array. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{util_8h_a92c1113e88f00f1fe38f88e29ea085e4_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{util_8h_afd86049c98dab897936e62cc9851a838}{\index{util.\-h@{util.\-h}!random\-\_\-uint@{random\-\_\-uint}}
+\index{random\-\_\-uint@{random\-\_\-uint}!util.h@{util.\-h}}
+\subsubsection[{random\-\_\-uint}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int random\-\_\-uint (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{max}
+\end{DoxyParamCaption}
+)}}\label{util_8h_afd86049c98dab897936e62cc9851a838}
+Returns a randomly generated integer between 0 and the given maximum.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em max} & The maximum boundary.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The randomly generated number. 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{util_8h_afd86049c98dab897936e62cc9851a838_icgraph}
+\end{center}
+\end{figure}
+
+
