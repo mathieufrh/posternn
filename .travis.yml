@@ -1,12 +1,16 @@
+sudo: required
+
 language: c
 
-compiler:
-  - clang
-  - gcc
+services:
+  - docker
 
-install: 
-  - sudo apt-get update || true
-  - sudo apt-get install libopencv-dev libcv-dev
+addons:
+  apt:
+    packages:
+    - cmake
+    - libopencv-dev
+    - libcv-dev
 
 script:
   - cmake .
