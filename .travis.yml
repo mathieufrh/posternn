@@ -4,7 +4,7 @@ compiler:
   - clang
   - gcc
 
-before_install: 
+install: 
   - sudo apt-get update || true
   - sudo apt-get install libopencv-dev libcv-dev
 
