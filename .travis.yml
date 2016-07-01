@@ -5,6 +5,10 @@ language: c
 services:
   - docker
 
+compiler:
+  - clang
+  - gcc
+
 addons:
   apt:
     packages:
