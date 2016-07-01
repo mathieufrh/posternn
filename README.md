@@ -1,7 +1,6 @@
 [![Build Status](https://travis-ci.org/mathieufrh/posternn.svg?branch=master)](https://travis-ci.org/ntop/ntopng)
 
-DESCRIPTION
-===========
+# DESCRIPTION
 
 This program implement a self organized map (SOM) neural network in C and use
 it to posterize images.
@@ -15,20 +14,24 @@ For further details please see the report PDF file (french inside).
 The program works pretty well with suported image formats without 
 transparency.
 
-REQUIREMENT
-===========
+# REQUIREMENT
 
 To compile this program you'll need cmake. On debian you can use:
+```
 # apt-get install cmake
+```
 
 You'll also need OpenCV. On debian you can use:
+```
 # apt-get install libopencv-dev libcv-dev
+```
 
-INSTALLATION
-============
+# INSTALLATION
 
-cd to the posternn directory then type the following command:
+cd to the `posternn` directory then type the following command:
+```
 $ cmake . && make
+```
 
 Done!
 The programm was successfully compiled and executed on:
@@ -40,30 +43,26 @@ The programm was successfully compiled and executed on:
 If you encounter any issue during the installation please contact me at
 mathieu.fourcroy@gmail.com
 
-USAGE EXAMPLE
-=============
+# USAGE EXAMPLE
 
 The program expect one mandatory option:
-    - -i which specify the image to posterized.
+ - -i which specify the image to posterized.
 The two others options are optional:
-    - -l specify the posterization level (the smaller the level the less 
-      colors in the posterized image). Default value is 2.
-    - -e Specify the number of iterations of the network.
-    - -t Specify the network threshold value. This is a stop condition for
-         the iterating loop. If the network delta value ver fell under this
-         threshold value, the loop is breaked.
-    - -o Specify the output path of the posterized image. Default is the 
-      directory of the input image.
+ - -l specify the posterization level (the smaller the level the less colors in the posterized image). Default value is 2.
+ - -e Specify the number of iterations of the network.
+ - -t Specify the network threshold value. This is a stop condition for the iterating loop. If the network delta value ver fell under this threshold value, the loop is breaked.
+ - -o Specify the output path of the posterized image. Default is the directory of the input image.
 
-The 'imgs' folder contains a sample set of images. Each images comes with it 
-posterized version. You can use one of these images to test the program or 
-choose an image file on your machine. For instance:
+The 'imgs' folder contains a sample set of images. Each images comes with it posterized version. You can use one of these images to test the program or choose an image file on your machine. For instance:
 
+```
 $ ./posternn -i ./imgs/car.jpg
+```
 
-Which will output the file /imgs/car_posterized.jpg. The posterized image 
-level is 2.
+Which will output the file /imgs/car_posterized.jpg. The posterized image level is 2.
 
 Or you can specify the posterization level and/or the output path:
 
+```
 $ ./posternn -i ./imgs/car.jpg -l 4 -o ./newdir/car_posterized_level_4.jpg
+```
