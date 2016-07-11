@@ -3,6 +3,9 @@
   <img alt="Coverity Scan Build Status"
        src="https://scan.coverity.com/projects/9395/badge.svg"/>
 </a>
+[![Code Climate](https://codeclimate.com/github/mathieufrh/posternn/badges/gpa.svg)](https://codeclimate.com/github/mathieufrh/posternn)
+[![Test Coverage](https://codeclimate.com/github/mathieufrh/posternn/badges/coverage.svg)](https://codeclimate.com/github/mathieufrh/posternn/coverage)
+[![Issue Count](https://codeclimate.com/github/mathieufrh/posternn/badges/issue_count.svg)](https://codeclimate.com/github/mathieufrh/posternn)
 
 # DESCRIPTION
 
