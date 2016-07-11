@@ -9,12 +9,26 @@ compiler:
   - clang
   - gcc
 
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "Sq9ykwdjQh1FibPjyyBbEVBsPZL27s1UaibF7X6L+b73PRwKILvO0t+31rizPWAgdVWOwM+rqAWI0HJE7PjI2MbxeovBZ056X1nIicAhbW2Mh+J7cNOWK+A15s7X6vdbVT1Q4wArQYmtDWTtqQTH4T8SWrAZ3QXnw/Jc7SpgHmzB62I7H37Vk4mHlC5xLH5w1ZilmL03xF5skA9K5k6dnl2xwZspJy++GgrL57nzMWglDsQCpUOmr569DpK7DYztabfrT3gc9KIrdtllFnNJHPfyaaek9+R7M4BBxfBE8VY0ZN+JocSf1AcfLym2a04VvGYfMGp8sFhjkyDlUSBai88DsaIbrhoqlMhlFYprqHSdKY/sqqMDRb2/IbAgygOkTPtSrtLaV7UpDZ10oMPtHE3/mkiWhBPum6v0wJG4V5+d2XWPK9qMOuEgjWRJsnhGr2TA1p1/eQig58V1y5Ky3zZ/EAHQUYG306X9yEvk0J+tLf1tIQ+GNj4OVJSVoawlOBLMNx4uAxFMMmlYU04t8iqnmc8ORPzASfIFmiAJ1/y85Chj0QfKxfvWnA70Z55pbtLeRBGXqP+JSVVyLfpT0AcrRyRPwT0vTO19OKxlVnPGGBq4h7SIE/ZBae031+elJVB40pZn6rTzRQDwDRCXlJeHUv/2C+V5tobxh3rQWnI="
+
 addons:
   apt:
     packages:
     - cmake
     - libopencv-dev
     - libcv-dev
+  coverity_scan:
+    project:
+      name: "mathieufrh/posternn"
+      description: "Build submitted via Travis CI"
+    notification_email: mathieu.fourcroy@gmail.com
+    build_command_prepend: "cmake"
+    build_command:   "make"
+    branch_pattern: coverity_scan
 
 script:
   - cmake .
