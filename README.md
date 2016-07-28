@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mathieufrh/posternn.svg?branch=master)](https://travis-ci.org/ntop/ntopng)
+[![Build Status](https://travis-ci.org/mathieufrh/posternn.svg?branch=master)](https://travis-ci.org/mathieufrh/posternn)
 <a href="https://scan.coverity.com/projects/mathieufrh-posternn">
   <img alt="Coverity Scan Build Status"
        src="https://scan.coverity.com/projects/9395/badge.svg"/>
