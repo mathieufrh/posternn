@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a05cfbc7ad9e44cfa211bc7fd831fee7)](https://www.codacy.com/app/mathieu-frh/posternn?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mathieufrh/posternn&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/mathieufrh/posternn.svg?branch=master)](https://travis-ci.org/mathieufrh/posternn)
 <a href="https://scan.coverity.com/projects/mathieufrh-posternn">
   <img alt="Coverity Scan Build Status"
